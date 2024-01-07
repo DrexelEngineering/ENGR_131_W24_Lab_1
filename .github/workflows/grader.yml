@@ -24,7 +24,7 @@ jobs:
         run: docker pull ${{ secrets.TEST_GRADER }} # You need to replace this with the correct docker container for the grader
 
       - name: Runs the grader
-        run: docker run -v ./:/app/submission ${{ secrets.TEST_GRADER }}
+        run: docker run -v ./:/app/submission ${{ secrets.ENGR131_LAB1_2024 }}
 
       # Commit all changed files back to the repository
       - uses: stefanzweifel/git-auto-commit-action@v5
