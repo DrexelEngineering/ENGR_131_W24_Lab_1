@@ -1,30 +1,30 @@
-# name: Grader
+name: Grader
 
-# on:
-#   push:
-#     branches: ["master"]
-#   pull_request:
-#     branches: ["master"]
+on:
+  push:
+    branches: ["master"]
+  pull_request:
+    branches: ["master"]
 
-# jobs:
-#   build:
-#     runs-on: ubuntu-latest
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-#     steps:
-#       - uses: actions/checkout@v3
+    steps:
+      - uses: actions/checkout@v3
 
-#       - name: Log in to Docker Hub
-#         uses: docker/login-action@v1
-#         with:
-#           username: ${{ secrets.DOCKER_USER }}
-#           password: ${{ secrets.DOCKER_PASSWORD_READ }}
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_PASSWORD_READ }}
 
-#       # Name of docker container image
-#       - name: Pull Docker image
-#         run: docker pull ${{ secrets.TEST_GRADER }} # You need to replace this with the correct docker container for the grader
+      # Name of docker container image
+      - name: Pull Docker image
+        run: docker pull ${{ secrets.TEST_GRADER }} # You need to replace this with the correct docker container for the grader
 
-#       - name: Runs the grader
-#         run: docker run -v ./:/app/submission ${{ secrets.ENGR131_LAB1_2024 }}
+      - name: Runs the grader
+        run: docker run -v ./:/app/submission ${{ secrets.ENGR131_LAB1_2024 }}
 
-#       # Commit all changed files back to the repository
-#       - uses: stefanzweifel/git-auto-commit-action@v5
+      # Commit all changed files back to the repository
+      - uses: stefanzweifel/git-auto-commit-action@v5
